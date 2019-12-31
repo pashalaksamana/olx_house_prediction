@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>House Price Prediction</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">House Price Prediction</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="https://www.olx.co.id/" target="_blank">OLX Indonesia</a></li>
+                <li><a href="https://www.linkedin.com/in/pasha-laksamana-putra-5a837695/" target="_blank">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="text-center">House Price Prediction</h1>
+        <p class="text-center">Input your house type & OLX will calculate your house price based on OLX Data</p>
+        <hr />
+      
+        <div class="row">
+            <div class="col-lg-12 form-group-lg">
+                <form action="/go" method="get">
+                    
+                    <div class="form-group">
+                        <label for="Location">Location</label>
+                        <div class="form-row">
+                          <div class="col-lg-4">
+                            <input type="text" class="form-control" name="province" placeholder="Province">
+                          </div>
+                          <div class="col-lg-4">
+                            <input type="text" class="form-control" name="city" placeholder="City">
+                          </div>
+                          <div class="col-lg-4">
+                            <input type="text" class="form-control" name="kecamatan" placeholder="Kecamatan">
+                          </div>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="Type">House Size</label>
+                        <div class="form-row">
+                          <div class="col-lg-6">
+                            <input type="text" class="form-control form-control-lg" name="sqr_building" placeholder="Luas Bangunan">
+                          </div>
+                          <div class="col-lg-6">
+                            <input type="text" class="form-control form-control-lg" name="sqr_land" placeholder="Luas Tanah">
+                          </div>
+
+                          </div>
+                    </div>  
+
+                    <div class="form-group">
+
+                        <label for="Type">House Room & Floor</label>
+                        <div class="form-row">
+
+                        <div class="col-lg-4">
+                        <input type="text" class="form-control form-control-lg" name="sqr_building" placeholder="Kamar Tidur">
+                        </div>
+                        <div class="col-lg-4">
+                        <input type="text" class="form-control form-control-lg" name="sqr_building" placeholder="Kamar Mandi">
+                        </div>
+                        <div class="col-lg-4">
+                        <input type="text" class="form-control form-control-lg" name="floor" placeholder="Lantai">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Certificate">Certificate</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="shm" id="inlineRadio1" value="1">
+                            <label class="form-check-label" for="inlineRadio1" name="shm">Sertifikat Hak Milik</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="hgb" id="inlineRadio2" value="1">
+                            <label class="form-check-label" for="inlineRadio2" name="hgb">Hak Guna Bangunan</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="lainnya" id="inlineRadio3" value="1">
+                            <label class="form-check-label" for="inlineRadio3" name="lainnya">Lainnya (PPJB, Girik Adat)</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Certificate">Facility</label>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1" name='ac'>
+                          <label class="form-check-label" for="inlineCheckbox1" style="padding-right: 20px;">ac</label>
+
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="1" name='swimmingpool'>
+                          <label class="form-check-label" for="inlineCheckbox2" style="padding-right: 20px;">swimmingpool</label>
+
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="1" name='carport'>
+                          <label class="form-check-label" for="inlineCheckbox3" style="padding-right: 20px;">carport</label>
+
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="1" name='garden'>
+                          <label class="form-check-label" for="inlineCheckbox4" style="padding-right: 20px;">garden</label>
+
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="1" name='garasi'>
+                          <label class="form-check-label" for="inlineCheckbox5" style="padding-right: 20px;">garasi</label>
+                        </div>  
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="1" name='telephone'>
+                          <label class="form-check-label" for="inlineCheckbox6" style="padding-right: 20px;">telephone</label>
+
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="1" name='pam'>
+                          <label class="form-check-label" for="inlineCheckbox7" style="padding-right: 20px;">pam</label>
+
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox8" value="1" name='waterheater'>
+                          <label class="form-check-label" for="inlineCheckbox8" style="padding-right: 20px;">waterheater</label>
+
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="1" name='refrigerator'>
+                          <label class="form-check-label" for="inlineCheckbox9" style="padding-right: 20px;">refrigerator</label>
+
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox10" value="1" name='stove'>
+                          <label class="form-check-label" for="inlineCheckbox10" style="padding-right: 20px;">stove</label>
+                        </div>  
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox11" value="1" name='microwave'>
+                          <label class="form-check-label" for="inlineCheckbox11" style="padding-right: 20px;">microwave</label>
+
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox12" value="1" name='oven'>
+                          <label class="form-check-label" for="inlineCheckbox12" style="padding-right: 20px;">oven</label>
+
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox13" value="1" name='fireextenguisher'>
+                          <label class="form-check-label" for="inlineCheckbox13" style="padding-right: 20px;">fireextenguisher</label>
+
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox14" value="1" name='gordyn'>
+                          <label class="form-check-label" for="inlineCheckbox14" style="padding-right: 20px;">gordyn</label>
+
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-lg-offset-5">
+                        <button type="submit" class="btn btn-lg btn-success">Predict Price!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container">
+{% block content %}
+{% endblock %}
+</div>
+
+
+
+</body>
+</html>

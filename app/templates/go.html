@@ -1,0 +1,18 @@
+{% extends "master.html" %}
+{% block title %}Price Prediction{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Price Prediction</h1>
+    <h4>House Price Prediction: Rp. {{price_prediction}} </h4>
+
+    <h4>Prediction Range Rp. {{floor_preds}} - Rp. {{ceil_preds}}</h4>
+    <h4>Prediction Accuracy {{accuracy}}</h4>
+    <br>
+    <h4>House Price Statistic in {{kecamatan}}</h4>
+    <h4>Average Price: {{mean}}</h4>
+    <h4>Min Price: {{min_price}}</h4>
+    <h4>Q1 Price: {{q1}}</h4>
+    <h4>Median Price: {{q2}}</h4>
+    <h4>Q3 Price: {{q3}}</h4>
+    <h4>Max Price: {{max_price}}</h4>
+{% endblock %}
